@@ -61,6 +61,7 @@ pub trait FromFloat {
     fn fromFloat(float_val: f64) -> Result<i32, String>;
 }
 
+// I am implementing my trait on the i32 type
 // if the float is already an integer value, use a simple cast
 // else return an Err as a String
 // - trying the Result type as a way to simulate how a recoverable error would occur in Rust
