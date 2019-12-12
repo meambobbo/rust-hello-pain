@@ -3,7 +3,9 @@ use std::fmt::{Debug, Error};
 
 fn main() {
     // println! is a macro that can accept a string literal ("" -> &str)
-    println!("Hello, world!");
+    println!("Hello, pain!");
+    // Rust can be quite painful early on, in order to prevent any possible run-time error
+    // Be prepared for lots of compile errors if you don't research the language before diving in
 
     // see some basic math
     basic_math();
@@ -58,7 +60,7 @@ impl FromFloat for i32 {
 }
 
 fn can_we_fail_runtime() {
-        // test method will return a Some and print the result below
+    // test method will return a Some and print the result below
     let string = test(&String::from("me"))
         .expect("got an unexpected None value"); // doesn't fire or we crash
     println!("{}", string);
