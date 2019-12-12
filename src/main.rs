@@ -99,9 +99,12 @@ fn can_we_fail_runtime() {
         // have to clone our default String to pass as an arg
 
         fn why_not() {
-            println!("you called why_not");
+            println!("\nyou called why_not");
         }
+        why_not();
     }
+
+    // why_not(); // won't compile bc not in scope
 
     // this will return a None, so we print the default value
     let res = test(&String::from(""));
