@@ -40,6 +40,23 @@ fn basic_math() {
     }
 }
 
+// I want to convert a float value to an integer in a special way, using a new Trait to do so
+pub trait FromFloat {
+    fn fromFloat(float_val: f64) -> Result<i32, String>;
+}
+
+// here's the implementation - if the float is already an integer value, use a simple cast; else return an Err as a String
+// - trying the Result type as a way to simulate how a recoverable error would occur in Rust
+impl FromFloat for i32 {
+    fn fromFloat(float_val: f64) -> Result<i32, String> {
+        if float_val.round() != float_val {
+            println!("value {:.64} is not an integer", float_val);
+            return Err("hey i'm an error".to_string());
+        }
+        return Ok(float_val as i32); // 
+    }
+}
+
 fn can_we_fail_runtime() {
         // test method will return a Some and print the result below
     let string = test(&String::from("me"))
@@ -80,23 +97,6 @@ fn test(thing: &String) -> Option<String> {
 
     println!("you did not start with me so returning a None");
     return None;
-}
-
-// I want to convert a float value to an integer in a special way, using a new Train to do so
-pub trait FromFloat {
-    fn fromFloat(float_val: f64) -> Result<i32, String>;
-}
-
-// here's the implementation - if the float is already an integer value, use a simple cast; else return an Err as a String
-// - trying the Result type as a way to simulate how a recoverable error would occur in Rust
-impl FromFloat for i32 {
-    fn fromFloat(float_val: f64) -> Result<i32, String> {
-        if float_val.round() != float_val {
-            println!("value {:.64} is not an integer", float_val);
-            return Err("hey i'm an error".to_string());
-        }
-        return Ok(float_val as i32); // 
-    }
 }
 
 // Creating my own error type - TODO
