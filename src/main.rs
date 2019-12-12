@@ -24,21 +24,21 @@ fn main() {
 
 // basic math with type inference
 fn basic_math() {
-    let x = 3;
-    let y = 4;
-    let z = x + y;
+    let x = 3; // i32
+    let y = 4; // i32
+    let z = x + y; // i32
     println!("x = {}, y = {}, z = x + y = {}\n", x, y, z);
 
     // no implicit type conversions, need to use a custom trait
-    let int_float = 5.0;
+    let int_float = 5.0; // f64
     let int2 = i32::fromFloat(int_float)
-        .expect("shoulda been an ok result");
+        .expect("shoulda been an ok result"); // converts f64 into i32
     println!("int_float = {}", int_float);
     println!("int2 = i32::fromFloat(int_float) is {}\n", int2);
 
-    let float = 4.1;
+    let float = 4.1; // f64
     // need to explicitly convert types
-    let float2 = float + f64::from(x);
+    let float2 = float + f64::from(x); // f64
     println!("float = {}", float);
     println!("float2 = float + f64::from(x) = {}", float2);
 
